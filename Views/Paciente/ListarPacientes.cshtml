@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AgendamentoViverBem.Models.Paciente>
+
+@{
+    ViewData["Title"] = "ListarPacientes";
+}
+
+<h1>ListarPacientes</h1>
+
+<p>
+    <a asp-action="Cadastrar">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                <a asp-action="Atualizar" asp-route-id="@item.IdPaciente">Edit</a> |
+                <a asp-action="BuscarId" asp-route-id="@item.IdPaciente">Details</a> |
+                <a asp-action="Deletar" asp-route-id="@item.IdPaciente">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
